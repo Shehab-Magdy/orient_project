@@ -31,15 +31,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Thired Part Apps
+    'crispy_forms',
     # My Apps
-    'orient_advances',
-    'user_management',
+    'orient_advances.apps.OrientAdvancesConfig',
+    'user_management.apps.UserManagementConfig',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL= '/home/'

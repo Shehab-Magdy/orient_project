@@ -56,11 +56,22 @@
 <main class="my-form pt-4">
     <div class="cotainer">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-6">
                     <div class="card">
-                        <div class="card-header">Profile</div>
+                        <div class="card-header">{{ user }} Profile</div>
                         <div class="card-body">
-                        <h3>{{ user.username }}</h3>
+                          <div class="content-section">
+                            <div class="media">
+                              <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+                              <div class="media-body">
+                                <h2 class="account-heading">{{ user.username }}</h2>
+                                <p class="text-secondary">{{ user.email }}</p>
+                                <p class="text-secondary">Employee ID: {{ user.profile.employee_id }}</p>
+                                <p class="text-secondary">Employee Department: {{ user.profile.section }}</p>
+                              </div>
+                            </div>
+                            <!-- FORM HERE -->
+                          </div>
                         </div>
                     </div>
             </div>

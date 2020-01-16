@@ -70,6 +70,12 @@
                                 {% endif %}
                                 <fieldset class="form-group">
                                     {{ form|crispy }}
+                                    <label for="section-dd">Department: </label>
+                                    <select name="section-dd" id="section-dd">
+                                      {% for sec in sections %}
+                                        <option value="{{ sec.id }}">{{ sec.section_name }}</option>
+                                      {% endfor %}
+                                    </select>
                                 </fieldset>
                                 <div class="col-md-3">
                                     <button type="submit" class="btn btn-primary">

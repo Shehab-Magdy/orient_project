@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from user_management.forms.register_form import UserRegisterForm
-
+from orient_advances.models import Section
 
 def register_view(request):
+    sections = Section.objects.all()
     if request.POST:
         form = UserRegisterForm(request.POST)
         if form.is_valid():
@@ -13,4 +14,4 @@ def register_view(request):
             return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request,'user_management/registration.html',{'form':form})
+    return render(request,'user_management/registration.html',{'form':form,'sections':sections})

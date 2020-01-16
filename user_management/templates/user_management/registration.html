@@ -53,6 +53,14 @@
         </div>
       </nav>
 
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+              </div>
+          {% endfor %}
+      {% endif %}
+
 <main class="my-form pt-4">
     <div class="cotainer">
         <div class="row justify-content-center">
@@ -61,13 +69,6 @@
                         <div class="card-header">Register</div>
                         <div class="card-body">
                             <form name="my-form" onsubmit="return validform()" action="" method="POST">{% csrf_token %}
-                                {% if messages %}
-                                    {% for message in messages %}
-                                        <div class="alert alert-{{ message.tags }}">
-                                            {{ message }}
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
                                 <fieldset class="form-group">
                                     {{ form|crispy }}
                                     <label for="section-dd">Department: </label>

@@ -1,27 +1,25 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
+from django.contrib.auth import login, authenticate
+from user_management.forms import RegistrationForm
 from django.contrib import messages
-from user_management.forms.register_form import UserRegisterForm
-from orient_advances.models import Section
-from django.contrib.auth.models import User
 
-def register_view(request):
-    sections = Section.objects.all()
+
+def registration_view(request):
+    context = {}
     if request.POST:
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            newUser = User()
-            newUser.email = request.POST.get('email')
-            newUser.username = request.POST.get('username')
-            newUser.password = request.POST.get('password1')
-            newUser.Profile.fullname = request.POST.get('fullname')
-            newUser.Profile.employee_id = request.POST.get('employee_id')
-            newUser.Profile.section = request.POST.get('section')
-            newUser.Profile.is_boss = True if request.POST.get('section-dd') else False
-
-            messages.success(request, f'Account created for {newUser.username}, You can now login.')
-            print('success')
-            # newUser.save()
+        form = RegistrationForm(request.POST)
+        if form.is_valid:
+            form.save()
+            email = form.cleaned_data.get('email')
+            row_password = form.cleaned_data.get('password1')
+            username = form.cleaned_data.get('username')
+            account = authenticate(email = email, password=row_password)
+            login(request,account)
+            messages.success(request, f'Account created for {username}, You can now login.')
             return redirect('login')
+        else:
+            context['registration_form']=form
     else:
-        form = UserRegisterForm()
-    return render(request,'user_management/registration.html',{'form':form,'sections':sections})
+        form = RegistrationForm()
+        context['registration_form']=form
+    return render(request,'user_management/registration.html',context)

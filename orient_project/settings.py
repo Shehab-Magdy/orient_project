@@ -75,6 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'orient_project.wsgi.application'
 
+AUTH_USER_MODEL = 'user_management.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

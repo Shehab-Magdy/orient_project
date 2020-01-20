@@ -64,19 +64,28 @@
 <main class="my-form pt-4">
     <div class="cotainer">
         <div class="row justify-content-center">
-            <div class="col-md-4">
+            <div class="col-md-5">
                     <div class="card">
                         <div class="card-header">Register</div>
                         <div class="card-body">
                             <form name="my-form" onsubmit="return validform()" action="" method="POST">{% csrf_token %}
                                 <fieldset class="form-group">
-                                    {{ form|crispy }}
-                                    <label for="section-dd">Department: </label>
-                                    <select name="section-dd" id="section-dd">
-                                      {% for sec in sections %}
-                                        <option value="{{ sec.id }}">{{ sec.section_name }}</option>
+                                  {% for field in registration_form %}
+                                  <p>
+                                      {{ field.label_tag }}
+                                      {{ field }}
+                                      
+                                      {% if field.help_text %}
+                                      <br>
+                                          <small style="color: gray; margin-left: auto;">{{ field.help_text }}</small>
+                                      {% endif %}
+                              
+                                      {% for error in field.errors %}
+                                          <p style="color:red;">{{ error }}</p>
                                       {% endfor %}
-                                    </select>
+                              
+                                  </p>
+                                  {% endfor %}
                                 </fieldset>
                                 <div class="col-md-3">
                                     <button type="submit" class="btn btn-primary">

@@ -12,10 +12,15 @@ def advance_request(request):
     if request.POST:
         form = AdvanceForm(request.POST)
         if form.is_valid():
-            username = request.username
-            form.emplyee = Account.objects.get(username=request.username)
-            form.save()
-            messages.success(request, f'Finance Advance Request created for {username}.')
+            submit = form.save(commit=False)
+            submit.emplyee_id = request.user
+            submit.amount = form.cleaned_data.get('amount')
+            submit.request_date = form.cleaned_data.get('request_date')
+            submit.save()
+            # username = request.username
+            # form.emplyee = Account.objects.get(username=request.username)
+            # form.save()
+            messages.success(request, f'Finance Advance Request created for {request.user}.')
             return redirect('home')
         else:
             context['Advance_Form']=form

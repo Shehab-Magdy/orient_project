@@ -1,10 +1,12 @@
 from django.db import models
+from orient_project import settings
 from user_management.models import Account
 
+
 class Advance(models.Model):
-    emplyee = models.ForeignKey(Account,on_delete=models.CASCADE)
-    amount = models.FloatField(name='Advance amount', help_text='Amount should be in LE')
-    request_date = models.DateField(name='Advance Date',auto_now=True)
-   
+    emplyee_id = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=7, decimal_places=2, help_text='Amount should be in LE')
+    request_date = models.DateField(default='2018-1-1')
+
     def __str__(self):
-        return f"{self.emplyee.username} has requested {self.amount}"
+        return self.amount

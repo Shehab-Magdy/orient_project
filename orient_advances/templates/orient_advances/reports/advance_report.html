@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>Title</title>
+        <title>Advance report</title>
         <style type="text/css">
             body {
                 font-weight: 200;
@@ -39,13 +39,14 @@
     <body>
         <div class='wrapper'>
             <div class='header'>
-                <p class='title'>Invoice # </p>
+                <p class='title'>Advance {{ order_id }} </p>
             </div>
         <div>
         <div class='details'>
-            Bill to: <br/>
-            Amount:  <br/>
-            Date: 
+            Date: {{ date }}<br/>
+            Bill to: {{ employee_name }}<br/>
+            Section: {{ section }}<br/>
+            Amount: {{ amount }} <br/>
             <hr class='hrItem' />
         </div>
     </div>

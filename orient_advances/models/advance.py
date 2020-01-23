@@ -9,4 +9,4 @@ class Advance(models.Model):
     request_date = models.DateField(default='2018-1-1')
 
     def __str__(self):
-        return self.amount
+        return str(self.amount)

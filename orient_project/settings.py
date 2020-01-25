@@ -60,7 +60,7 @@ ROOT_URLCONF = 'orient_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['user_management.tempplates','orient_advances.templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

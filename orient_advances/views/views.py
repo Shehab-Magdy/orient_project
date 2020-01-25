@@ -17,11 +17,8 @@ def advance_request(request):
             submit.amount = form.cleaned_data.get('amount')
             submit.request_date = form.cleaned_data.get('request_date')
             submit.save()
-            # username = request.username
-            # form.emplyee = Account.objects.get(username=request.username)
-            # form.save()
             messages.success(request, f'Finance Advance Request created for {request.user}.')
-            return redirect('home')
+            return redirect('to_pdf')
         else:
             context['Advance_Form']=form
     else:

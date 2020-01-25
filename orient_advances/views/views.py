@@ -7,6 +7,9 @@ from django.contrib import messages
 def index(request):
     return render(request,'orient_advances/index.html')
 
+def adv_about(request):
+    return render(request,'about.html')
+
 def advance_request(request):
     context = {}
     if request.POST:

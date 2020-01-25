@@ -49,7 +49,7 @@ class Account(AbstractBaseUser):
         verbose_name_plural = 'Accounts'
 
     def __str__(self):
-        return f'{self.username} profile'
+        return f'{self.username}'
 
     def has_perm(self, perm, obj=None):
         return self.is_admin

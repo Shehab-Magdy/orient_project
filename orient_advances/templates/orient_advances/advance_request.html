@@ -12,13 +12,13 @@
 <main class="my-form pt-4">
     <div class="cotainer">
         <div class="row justify-content-center">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <div class="card">
                         <div class="card-header">Set Your Request</div>
                         <div class="card-body">
                           <form name="my-form" onsubmit="return validform()" action="" method="POST">{% csrf_token %}
                                 <fieldset class="form-group">
-                                  {% for field in Advance_Form %}
+                                  <!-- {% for field in Advance_Form %}
                                   <p>
                                     {{ field.label_tag }}
                                       {{ field }}
@@ -32,7 +32,8 @@
                                           <p style="color:red;">{{ error }}</p>
                                           {% endfor %}
                                   </p>
-                                  {% endfor %}
+                                  {% endfor %} -->
+                                  {{ Advance_Form|crispy }}
                                 </fieldset>
                                 <div class="col-md-3">
                                   <button type="submit" class="btn btn-primary">

@@ -28,3 +28,6 @@ def advance_request(request):
         form = AdvanceForm()
         context['Advance_Form']=form
     return render(request,'orient_advances/advance_request.html',context)
+
+def other_request(request):
+    return render(request,'orient_advances/other_request.html')

@@ -8,4 +8,5 @@ urlpatterns = [
     path('', views.index, name='home0'),
     path('pdf/',GeneratePdf.GeneratePdf.as_view(),name='to_pdf'),
     path('home/advance', views.advance_request, name='advance'),
+    path('home/other', views.other_request, name='other'),
 ]

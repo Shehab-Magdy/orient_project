@@ -1,0 +1,5 @@
+
+    
+  .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+    background-color: blue;
+  }

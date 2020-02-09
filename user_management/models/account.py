@@ -31,7 +31,7 @@ class Account(AbstractBaseUser):
     image = models.ImageField(default='default.png',upload_to='profile_img')
     employee_id = models.CharField(max_length=10, unique=True)
     is_boss = models.BooleanField(default=False, blank=True)
-    section = models.ForeignKey('Section', on_delete=models.CASCADE)
+    section = models.ForeignKey(Section, on_delete=models.CASCADE)
     date_joined = models.DateTimeField(verbose_name='Date Joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='Last Login', auto_now=True)
     is_admin = models.BooleanField(default=False)

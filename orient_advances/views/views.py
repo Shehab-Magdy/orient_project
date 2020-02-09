@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from orient_advances.forms import AdvanceForm
+from orient_advances.forms import AdvanceForm, ExpensForm, SectionForm
 from user_management.models import Account
 
 from django.contrib import messages
@@ -31,3 +31,39 @@ def advance_request(request):
 
 def other_request(request):
     return render(request,'orient_advances/other_request.html')
+
+def add_section(request):
+    context = {}
+    if request.POST:
+        form = SectionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Department added successfully.')
+            return redirect('section_list')
+        else:
+            context['Section_Form']=form
+    else:
+        form = SectionForm()
+        context['Section_Form']=form
+    return render(request,'orient_advances/section_form.html',context)
+
+def list_section(requst):
+    pass
+
+def add_expens_type(request):
+    context = {}
+    if request.POST:
+        form = ExpensForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Department added successfully.')
+            return redirect('expens_list')
+        else:
+            context['Expens_Form']=form
+    else:
+        form = ExpensForm()
+        context['Expens_Form']=form
+    return render(request,'orient_advances/expens_form.html',context)
+
+def list_expens(requst):
+    pass

@@ -47,7 +47,7 @@ def add_section(request):
         context['Section_Form']=form
     return render(request,'orient_advances/section_form.html',context)
 
-def list_section(requst):
+def list_section(request):
     pass
 
 def add_expens_type(request):
@@ -65,5 +65,5 @@ def add_expens_type(request):
         context['Expens_Form']=form
     return render(request,'orient_advances/expens_form.html',context)
 
-def list_expens(requst):
+def list_expens(request):
     pass

@@ -18,22 +18,7 @@
                         <div class="card-body">
                           <form name="my-form" onsubmit="return validform()" action="" method="POST">{% csrf_token %}
                                 <fieldset class="form-group">
-                                  <!-- {% for field in Advance_Form %}
-                                  <p>
-                                    {{ field.label_tag }}
-                                      {{ field }}
-                                      
-                                      {% if field.help_text %}
-                                      <br>
-                                      <small style="color: gray; margin-left: auto;">{{ field.help_text }}</small>
-                                      {% endif %}
-                              
-                                      {% for error in field.errors %}
-                                          <p style="color:red;">{{ error }}</p>
-                                          {% endfor %}
-                                  </p>
-                                  {% endfor %} -->
-                                  {{ Advance_Form|crispy }}
+                                  {{ other_Form|crispy }}
                                 </fieldset>
                                 <div class="col-md-3">
                                   <button type="submit" class="btn btn-primary">

@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from orient_advances.forms import AdvanceForm, ExpensForm, SectionForm
+from orient_advances.forms import AdvanceForm, ExpensForm, SectionForm, otherForm
 from orient_advances.models import Section, Expens
 from user_management.models import Account
 
@@ -31,7 +31,24 @@ def advance_request(request):
     return render(request,'orient_advances/advance_request.html',context)
 
 def other_request(request):
-    return render(request,'orient_advances/other_request.html')
+    context = {}
+    if request.POST:
+        form = otherForm(request.POST)
+        if form.is_valid():
+            submit = form.save(commit=False)
+            submit.emplyee_id = request.user
+            submit.amount = form.cleaned_data.get('amount')
+            submit.request_date = form.cleaned_data.get('request_date')
+            submit.description = form.cleaned_data.get('description')
+            submit.save()
+            messages.success(request, f'Request created for {request.user}.')
+            return redirect('to_pdf')
+        else:
+            context['other_Form']=form
+    else:
+        form = otherForm()
+        context['other_Form']=form
+    return render(request,'orient_advances/other_request.html',context)
 
 def add_section(request):
     context = {}

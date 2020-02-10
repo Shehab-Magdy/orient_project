@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from orient_advances.forms import AdvanceForm, ExpensForm, SectionForm
+from orient_advances.models import Section, Expens
 from user_management.models import Account
 
 from django.contrib import messages
@@ -38,8 +39,8 @@ def add_section(request):
         form = SectionForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Department added successfully.')
-            return redirect('section_list')
+            messages.success(request, f'Department successfully added.')
+            return redirect('department_list')
         else:
             context['Section_Form']=form
     else:
@@ -48,7 +49,11 @@ def add_section(request):
     return render(request,'orient_advances/section_form.html',context)
 
 def list_section(request):
-    pass
+    context = {}
+    sections = Section.objects.all()
+    context['sections']=sections
+    return render(request,'orient_advances/section_list.html',context)
+    
 
 def add_expens_type(request):
     context = {}
@@ -56,8 +61,8 @@ def add_expens_type(request):
         form = ExpensForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Department added successfully.')
-            return redirect('expens_list')
+            messages.success(request, f'Expense type added successfully.')
+            return redirect('expenses_list')
         else:
             context['Expens_Form']=form
     else:
@@ -66,4 +71,7 @@ def add_expens_type(request):
     return render(request,'orient_advances/expens_form.html',context)
 
 def list_expens(request):
-    pass
+    context = {}
+    expens = Expens.objects.all()
+    context['expenses']=expens
+    return render(request,'orient_advances/expens_list.html',context)

@@ -54,9 +54,19 @@
                 <a class="dropdown-item" href="{% url 'other' %}">Other expenses</a>
               </div>
             </li>
+            <li class="nav-item dropdown show">
+              <a class="btn btn-secondary dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'department_list' %}">Departments</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'expenses_list' %}">Expenses Types</a>
+              </div>
+            </li>
               {% else %}
               <li class="nav-item">
-                <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'login' %}">Login</a></li>
+                <li class="nav-item" role="presentation"><a class="btn btn-secondary active" href="{% url 'login' %}">Login</a></li>
               </li>
               {% endif %}
               <li class="nav-item">

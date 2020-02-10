@@ -3,8 +3,8 @@ from orient_advances.models import Expens
 
 
 class ExpensForm(forms.ModelForm):
-    name = forms.CharField(required=True, label='Expense Name')
+    expens_name = forms.CharField(required=True, label='Expense Name')
 
     class Meta:
         model = Expens
-        fields = ['name']
+        fields = ['expens_name']

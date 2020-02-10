@@ -3,5 +3,34 @@
 <title>Expenses</title>
 {% endblock title %} {% block PageTitle %}
 {% endblock PageTitle %} {% block Content %}
-
+<main class="my-form pt-4">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Expenses Types</div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Expense Name</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    {% for expense in expenses %}
+                                  <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ expense }}</td>
+                                  </tr>
+                                  {% endfor %}
+                                </tbody>
+                              </table>
+                            <a href="{% url 'expenses_new' %}">Add new Expense</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</main>
 {% endblock Content %}

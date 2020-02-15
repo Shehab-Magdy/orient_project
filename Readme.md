@@ -2,6 +2,9 @@
 
 
 ***Road map***
+- authorizations
+- password_change
+- password_reset
 - edit profile
 - Manage users
     - add
@@ -9,8 +12,6 @@
     - set as admin
     - set as head of department
     - change password.
-- script to create superuser,
-- script to insert users, email, name, password, idno
 - managers approval.
 - other financial expenses receipt
 - report for advances by date range and by department

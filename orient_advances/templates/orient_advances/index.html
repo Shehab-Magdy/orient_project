@@ -1,9 +1,41 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} 
+{% load static %} 
 
 {% block title %}
 <title>Home page</title>
 {% endblock title %}
 
-{% block PageTitle %}
-  {% endblock PageTitle %}
-    
+
+{% block Content %}
+  
+    <!-- <img class="bgimg" src="./img/night-sky-star-background-material-blue.jpg"/> -->
+    <div class="homepageFirstSection">
+      <div class="hpSection1">
+        <img src="{% static 'orient_advances/dist/img/orient.png' %}" alt="orient" />
+      </div>
+      <div class="hpSection2">
+        <div class="sectionRow">
+          <a href="{% url 'advance' %}"><button>
+            <img src="{% static 'orient_advances/dist/img/users.png' %}" alt="Advance Payment" />
+            <span>Advance Payment</span>
+          </button></a>
+          <a href="{% url 'other' %}"><button>
+            <img src="{% static 'orient_advances/dist/img/home.png' %}" alt="Other Expenses" />
+            <span>Other Expenses</span>
+          </button></a>
+        </div>
+        <div class="sectionRow">
+          <a href="{% url 'logout' %}"><button>
+            <img src="{% static 'orient_advances/dist/img/hands.png' %}" alt="Log Out" />
+            <span>Log Out</span>
+          </button></a>
+          <a href="#"><button>
+            <img src="{% static 'orient_advances/dist/img/speech-bubble.png' %}" alt="Contact Us" />
+            <span>Contact Us</span>
+          </button></a>
+        </div>
+        <div></div>
+      </div>
+    </div>
+
+{% endblock Content %}

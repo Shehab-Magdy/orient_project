@@ -1,35 +1,101 @@
 {% load static %} 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-        <link rel="icon" href="{% static 'orient_advances/dist/img/Favicon.ico' %}">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{% static "orient_advances/dist/css/style.css" %}">
-
+        <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link rel="icon" href="{% static 'orient_advances/dist/img/Favicon.ico' %}">
     
+    <link rel="stylesheet" href="{% static 'orient_advances/dist/css/style.css' %}">
+
     {% block title %}
-    <title>Registration</title>
+    <title>Orient</title>
     {% endblock title %}
         
-    <style>
-      body {
-         background-image: url({% static "orient_advances/dist/img/images.jpg" %});
-           background-size: cover;
-            }
-</style>
+    <!-- <style>
+      body {background-image: url({% static "orient_advances/dist/img/images.jpg" %}); background-size: cover;}
+    </style> -->
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="{% url 'home' %}"><img data-bs-hover-animate="pulse" src="{% static "orient_advances/dist/img/logo.png" %}" width="160" height="80"></a>
+      <header>
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
+          <div class="container">
+            <!-- Navbar brand -->
+            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+            <a class="navbar-brand" href="{% url 'home' %}"><img data-bs-hover-animate="pulse" src="{% static 'orient_advances/dist/img/Favicon.ico' %}" width="35" height="35"></a>
+            
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+              <!-- Links -->
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'home' %}">Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'advance_about' %}">About</a>
+                </li>
+  
+                <!-- Dropdown -->
+                <li class="nav-item dropdown active">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administration</a>
+                  <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'department_list' %}">Departments</a>
+                    <a class="dropdown-item" href="{% url 'expenses_list' %}">Expenses Types</a>
+                  </div>
+                </li>
+              </ul>
+              <!-- Links -->
+              <ul class="navbar-nav md-form my-0">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="btn btn-light action-button" role="button" href="{% url 'register' %}">Sign Up</a>
+                </li>
+              </ul>
+              <!-- <form class="form-inline">
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            </div>
+          </form> -->
+            </div>
+            <!-- Collapsible content -->
+          </div>
+        </nav>
+        <!--/.Navbar-->
+      </header>
+  
+      <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="{% url 'home' %}"><img data-bs-hover-animate="pulse" src="{% static 'orient_advances/dist/img/logo.png' %}" width="160" height="80"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -74,9 +140,12 @@
               </li>
           </ul>
         </div>
-      </nav>
+      </nav> -->
 
-    {% if messages %} {% for message in messages %}
+<main>
+  <div class="homepagebgContainer" style="background-image: url({% static 'orient_advances/dist/img/night-sky-blue.jpg' %});">
+
+{% if messages %} {% for message in messages %}
     <div class="alert alert-{{ message.tags }}">
       {{ message }}
     </div>
@@ -86,13 +155,20 @@
 
     {% endblock PageTitle %}
 
-{% block Content %}
-    
-{% endblock Content %}
-
-{% block Footer %}
-    
-{% endblock Footer %}
+    {% block Content %}
+        
+    {% endblock Content %}
+  </div>
+</main>
+    <!-- Footer -->
+    <footer class="page-footer font-small indigo">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a class="copyright" href="#">ALV</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
